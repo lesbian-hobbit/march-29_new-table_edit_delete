@@ -1,11 +1,16 @@
-<table class="table table-hover">
+@include('partials.header')
+<x-nav/>
+@if (Session::has('success'))
+{{Session::get('success')}}
+@endif
+<table class="table table-hover table-dark">
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">First Name</th>
-      <th scope="col">EMail</th>
-      <th scope="col">Address</th>
+      <th scope="col">LAST NAME</th>
+      <th scope="col">FIRST NAME</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">ADDRESS</th>
       <th></th>
       <th>
 
@@ -20,9 +25,10 @@
       <td>{{$customer->firstName}}</td>
       <td>{{$customer->email}}</td>
       <td>{{$customer->address}}</td>
-      <td><a href="#">Edit</a></td>
-      <td><a href="#">Delete</a></td>
+      <td><a href="edit/{{$customer->id}}">Edit</a></td>
+      <td><a href="delete/{{$customer->id}}">Delete</a></td>
     </tr>
   </tbody>
   @endforeach
 </table>
+@include('partials.footer')

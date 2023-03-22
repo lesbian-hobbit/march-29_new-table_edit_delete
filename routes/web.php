@@ -15,3 +15,25 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [CustomerController::class, 'index']);
+
+//Register
+Route::get('/register', [UserController::class, 'register']);
+Route::post('/store', [UserController::class, 'store']);
+
+//Login
+Route::get('/login', [UserController::class, 'login']);
+Route::post('/login/process', [UserController::class, 'process']);
+
+//Logout
+Route::post('/logout', [UserController::class, 'logout']);
+
+//AddCustomer
+Route::get('/addCustomer', [CustomerController::class, 'addCustomer'])->middleware('auth');
+Route::post('/saveCustomer', [CustomerController::class, 'saveCustomer'])->middleware('auth');
+
+//Edit
+Route::get('edit/{id}', [CustomerController::class, 'edit'])->middleware('auth');
+Route::post('updateCustomer', [CustomerController::class, 'updateCustomer'])->middleware('auth');
+
+//Delete
+Route::get('delete/{id}', [CustomerController::class, 'delete'])->middleware('auth');
