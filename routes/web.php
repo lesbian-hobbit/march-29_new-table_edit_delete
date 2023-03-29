@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +14,8 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [CustomerController::class, 'index']);
+//Product
+Route::get('/', [UserController::class, 'index']);
 
 //Register
 Route::get('/register', [UserController::class, 'register']);
@@ -27,13 +28,31 @@ Route::post('/login/process', [UserController::class, 'process']);
 //Logout
 Route::post('/logout', [UserController::class, 'logout']);
 
-//AddCustomer
-Route::get('/addCustomer', [CustomerController::class, 'addCustomer'])->middleware('auth');
-Route::post('/saveCustomer', [CustomerController::class, 'saveCustomer'])->middleware('auth');
+//AddProduct
+Route::get('/addProduct', [ProductController::class, 'addProduct'])->middleware('auth');
+Route::post('/saveProduct', [ProductController::class, 'saveProduct'])->middleware('auth');
 
 //Edit
-Route::get('edit/{id}', [CustomerController::class, 'edit'])->middleware('auth');
-Route::post('updateCustomer', [CustomerController::class, 'updateCustomer'])->middleware('auth');
+Route::get('edit/{id}', [ProductController::class, 'edit'])->middleware('auth');
+Route::post('updateProduct', [ProductController::class, 'updateProduct'])->middleware('auth');
 
 //Delete
-Route::get('delete/{id}', [CustomerController::class, 'delete'])->middleware('auth');
+Route::get('delete/{id}', [ProductController::class, 'delete'])->middleware('auth');
+
+
+
+
+
+//Product
+Route::get('/products', [ProductController::class, 'index']);
+
+//AddProduct
+Route::get('/addProduct', [ProductController::class, 'addProduct']);
+Route::post('/saveProduct', [ProductController::class, 'saveProduct']);
+
+//Edit
+Route::get('edit/{id}', [ProductController::class, 'edit']);
+Route::post('updateProduct', [ProductController::class, 'updateProduct']);
+
+//Delete
+Route::get('delete/{id}', [ProductController::class, 'delete']);
